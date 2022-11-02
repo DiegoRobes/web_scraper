@@ -1,0 +1,48 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="static/css/styles.css">
+{% endblock %}
+
+{% block title %}Hugo Award Winners{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <div class="container">
+      <h1 class="display-4 subtitle">Hugo Award Winners</h1>
+        <p class="subtitle">Every winner since 1953</p>
+      <hr class="my-4">
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+	  <table class="table">
+          <tr>
+              {% for i in years[0]: %}
+              <th>
+                  {{ i }}
+              </th>
+              {% endfor %}
+          </tr>
+          {% for i in years[1:]: %}
+          <tr>
+              {% for x in i: %}
+              <td>
+                  <b>{{ x }}</b>
+              </td>
+              {% endfor %}
+          </tr>
+          {% endfor %}
+      </table>
+
+        <a href="{{url_for('home')}}">
+                <button type="button" class="click">Back to top</button>
+        </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
